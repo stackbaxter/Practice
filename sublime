@@ -1,0 +1,63 @@
+"""
+An interactive calander
+that is accesssed by the command line
+"""
+from time import sleep, strftime
+USER_FIRST_NAME = "Stefan"
+
+calander = {}
+def welcome():
+	print "Welcome, " + USER_FIRST_NAME + "."
+	print "The calander is opening..."
+	sleep(1)
+	print "Today is: " + strftime("%A %B %d, %Y")
+	print "at: " + strftime("%I %M %S")
+	print "What would you like to do?"
+
+def start_calander():
+	welcome()
+	start = True
+	while start:
+		user_choice = raw_input("select A to Add, U to Update, V to View, D to Delete, X to Exit:")
+		user_choice = user_choice.upper()
+		if user_choice == "V":
+			if len(calander.keys()) < 1:
+				print "Calander Empty."
+		elif user_choice =="U":
+			date = raw_input("What date? ")
+			update = raw_input("Enter the update: ")
+			calander[date] = update
+			print "Update successful"
+			print calander
+		elif user_choice == "A":
+			event = raw_input("Enter event: ")
+			date = raw_input("Enter date MM/DD/YYYY: ")
+			if (len(date) > 10 or int(date[6:]) < int(strftime("%Y"))):
+				print "Invalid input"
+				try_again = raw_input("Try Again? Y for Yes, N for No: ")
+				try_again = try_again.upper()
+				if try_again == "Y":
+					continue
+				else:
+					start = False
+			else: calender[date] = event
+        print "Event was added"
+        print calendar
+		elif user_choice == "D":
+      if len(calander.keys()) < 1:
+				print "Calander Empty."
+			else: 
+				event = raw_input("What event? ")
+				for date in calendar.keys():
+					if event == calendar[date]:
+						del calendar[date]
+						print "Event deleted"
+						print calendar
+					else: 
+						print "Invalid entry"
+		elif user_choice == "X":
+			start = False
+		else:
+			print "Invalid entry" 
+			break
+start_calendar()
