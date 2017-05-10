@@ -10,6 +10,9 @@ let ccost;
 
 //think about split method
 function canCast(mana, cost, option) {
+  if(mana === cost){
+    return true;
+  }
 //evaluating the mana
   if(!isNaN(mana.charAt())){
     clearMana = (mana.slice(0,1));
@@ -23,9 +26,9 @@ function canCast(mana, cost, option) {
       console.log(clearMana);
     }
 
- }
- else{coloredMana = mana.split('');}
-  console.log(coloredMana);
+    }
+  else{coloredMana = mana.split('');}
+    console.log(coloredMana);
 
 // evaluating the cost
   if(!isNaN(cost.charAt())){
