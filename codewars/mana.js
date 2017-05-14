@@ -11,30 +11,27 @@ let cCost;
 //spell eval function, ideally just pass spell, option and cost
 //
 function speleval(spell, cost){
+  if(spell === cost){return true;};
 
   mana = spell.split('');
-  coloredMana = mana.filter(function(spell){
-    return isNaN(spell);
-    });
-  clearMana = mana.filter(function (spell){
-    return !isNaN(spell);
-    });
+
+  coloredMana = mana.filter(spell => isNan(spell));
+
+  clearMana = mana.filter(spell => !isNaN(spell));
+
   clearMana = parseInt(clearMana.join(''));
     console.log('clear mana: '+clearMana);
     console.log('colored mana: '+coloredMana);
 
 // evaluating the cost
   cost = cost.split('');
-  clearCost = cost.filter(function(spell){
-    return !isNaN(spell);
-    });
+  coloredCost = cost.filter(spell => isNan(spell));
+  clearCost = cost.filter(spell => !isNan(spell));
 
   clearCost = parseInt(clearCost.join(''));
   console.log(clearCost);
 
-  coloredCost = cost.filter(function(spell){
-    return isNaN(spell);
-    });
+
 
   console.log(coloredCost);
   cCost = cost.length;
@@ -42,7 +39,7 @@ function speleval(spell, cost){
     console.log(coloredMana);
     console.log(coloredMana.indexOf(coloredCost[i]));
 
-    if(coloredMana.includes(coloredCost[i]) === false){
+    if(coloredCost.every(letter => coloredMana.includes(letter));
       console.log(coloredMana.indexOf(coloredCost[i])+'blah');
          return false;
       }else{
