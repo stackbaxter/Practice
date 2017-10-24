@@ -15,9 +15,9 @@ function canCast(mana, spell1, spell2){
   coloredMana = mana.filter(spell => isNan(spell));
   clearMana = mana.filter(spell => !isNaN(spell));
 
-  coloredCost = cost.filter(spell => isNan(spell));
-  clearCost = cost.filter(spell => !isNan(spell));
+let mana = spell.split('');
 
+  coloredMana = mana.filter(spell => isNaN(spell));
 
   if(spell2)
     spell2 = spell2.split('');
@@ -33,27 +33,34 @@ function canCast(mana, spell1, spell2){
 
 // evaluating the cost
   cost = cost.split('');
- 
+  coloredCost = cost.filter(spell => isNan(spell));
+  clearCost = cost.filter(spell => !isNaN(spell));
   clearCost = parseInt(clearCost.join(''));
-  console.log(clearCost);
+  console.log('clearCost: '+ clearCost);
+  console.log('coloredCost: '+ coloredCost);
 
 
+  if(coloredCost.every(letter => coloredMana.includes(letter))){
+    return coloredMana.filter(spent => coloredCost.includes(!spent));
+  }
+    else{return false;}
 
-  console.log(coloredCost);
-  cCost = cost.length;
-  for(let i = 0; i < cost.length; i ++){
-    console.log(coloredMana);
-    console.log(coloredMana.indexOf(coloredCost[i]));
 
-    if(coloredCost.every(letter => coloredMana.includes(letter));
-      console.log(coloredMana.indexOf(coloredCost[i])+'blah');
-         return false;
-      }else{
+  // console.log(coloredCost);
+  // cCost = cost.length;
+  // for(let i = 0; i < cost.length; i ++){
+  //   console.log(coloredMana);
+  //   console.log(coloredMana.indexOf(coloredCost[i]));
 
-         //slice the spell off the stash NEED to add check of clearcost and clear mana before declaring win
-        spentSpells.push(coloredMana.splice(coloredMana.indexOf(coloredCost[i]),1));
-        cCost --;
-      }
+
+      // console.log(coloredMana.indexOf(coloredCost[i])+'blah');
+      //    return false;
+      // }else{
+
+     //slice the spell off the stash NEED to add check of clearcost and clear mana before declaring win
+    spentSpells = coloredMana.filter(spells => coloredCost.includes(spell));
+    console.log('spent spells: '+spentSpells);
+
     if ((cCost === 0 && spell.length === 0)&& clearMana >= clearCost){
         return true;
     }else if(coloredMana.length + clearMana >= clearCost){
@@ -63,7 +70,7 @@ function canCast(mana, spell1, spell2){
     }else{return false;}
 
 }
-}
+
 
 function canCast(mana, cost, option) {
   //evaluating the mana

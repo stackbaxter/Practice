@@ -6,17 +6,20 @@
   </head>
 <body>
   <script>
-  function duplicateCount(text){
-    if(!text){
-      return 0;
-    }
-    else{
-      text = text.toLowerCase().split('').sort();
-  console.log(text);
 
-  console.log(text.join().match(/([a-z])\1+/g));
-}
-}
+  makes10=(a,b)=>(a+b||(a||b)==10?true:false);
+makes10(4,3);
+//   function duplicateCount(text){
+//     if(!text){
+//       return 0;
+//     }
+//     else{
+//       text = text.toLowerCase().split('').sort();
+//   console.log(text);
+//
+//   console.log(text.join().match(/([a-z])\1+/g));
+// }
+// }
 </script>
   </body>
   </html>
