@@ -10,14 +10,22 @@ let spentSpells = [];
 let cCost;
 //spell eval function, ideally just pass spell, option and cost
 //
-function speleval(spell, cost){
-  if(spell === cost){return true;};
+function canCast(mana, spell1, spell2){
+  
+  coloredMana = mana.filter(spell => isNan(spell));
+  clearMana = mana.filter(spell => !isNaN(spell));
+
+  coloredCost = cost.filter(spell => isNan(spell));
+  clearCost = cost.filter(spell => !isNan(spell));
+
+
+  if(spell2)
+    spell2 = spell2.split('');
+    {return true;};
 
   mana = spell.split('');
 
-  coloredMana = mana.filter(spell => isNan(spell));
-
-  clearMana = mana.filter(spell => !isNaN(spell));
+  
 
   clearMana = parseInt(clearMana.join(''));
     console.log('clear mana: '+clearMana);
@@ -25,9 +33,7 @@ function speleval(spell, cost){
 
 // evaluating the cost
   cost = cost.split('');
-  coloredCost = cost.filter(spell => isNan(spell));
-  clearCost = cost.filter(spell => !isNan(spell));
-
+ 
   clearCost = parseInt(clearCost.join(''));
   console.log(clearCost);
 
