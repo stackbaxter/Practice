@@ -52,9 +52,10 @@
           var c = this;
           this._super();
           this._serverSyncs = [];
-          var d = (typeof Date.now == 'function' ? Date.now : function() {
-              return new Date().getTime()
-          });
+          var d = new Date("December 15, 2017");
+        //   (typeof Date.now == 'function' ? Date.now : function() {
+        //     return new Date().getTime()
+        // });
           var e = (window.performance && typeof window.performance.now == 'function');
 
           function timerCallBack(a) {
